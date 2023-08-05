@@ -1,3 +1,5 @@
+team_stats.xlsx
+*.json
 # Logs
 logs
 *.log
