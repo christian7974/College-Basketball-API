@@ -1,6 +1,6 @@
 # College-Basketball-API
 ### Christian Tropeano
-
+### Will Update Endpoints when I deploy API
 ## Description of Project
 This is an API that has the 2023-2024 Statistics of every NCAA DI Men's Basketball team in the country. There is also some functionality to fetch all teams and their stats, fetch a team by name as well as other functions.  
 This project was made using Node.js, Express, Mongoose/MongoDB and hosted on **TBD**.  
@@ -17,7 +17,7 @@ and by doing so, you can access multiple parameters and use both of them to fetc
 I got the inspiration for this project when I wanted something to help me create a bracket for March Madness. I could not find a tool that listen out every statistic for a team (ESPN did not have enough statistics to make a good decision). The ones that did were either really difficult to use or were not free.  
 I made this tool so that other people can have access to statistics about every NCAA Division I and can use that information to make better brackets and to have more fun during March Madness.
 
-## How To Use
+## Features/Functionality
 ### Fetch Every Team
 To get all of the statistics of a team, use the following:
 ```
@@ -74,6 +74,17 @@ For instance, if you wanted to sort teams by their 3-point shots attempted per g
 ```
 http://localhost:3000/teams/sort/threePointAttPG/asc
 ```
+
+## Features To Be Implemented
+- The ability to fetch multiple teams (to be able to compare all of them)
+- Compare players (compare players' statistics)
+
 ## Problem?
-If you notice a problem (a team has the incorrect statistics, some functionality does not work, etc.) then please create an issue with a description of the issue and how you reproduced that mishap.
+If you notice a problem (a team has the incorrect statistics, some functionality does not work, etc.) then please create an issue with a description of the issue and how you reproduced that mishap. A helpful issue would include:
+- A short but descriptive title about the problem
+- The endpoint that you used that caused the error
+- Steps to replicate that issue
+- An image of your code/the result that the endpoint produced
+Any more information would be very helpful in debugging and resolving the issue.
+
 
