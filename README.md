@@ -34,7 +34,7 @@ where *team_name* is the name of the team that you want to fetch.
 **Important**: If you want to fetch a team that contains spaces (i.e. Oral Roberts, Wright State, etc.), write the name of the team, however replace the spaces with underscores. So instead of ```Oral Roberts```, please use ```Oral_Roberts```.
 
 ### Sort Teams by a Statistic
-[Here is tha table of eligible statistics you can query for](#Table-of-Statistics)
+[Here is the table of eligible statistics you can query for](#table-of-statistics)
 
 To sort the teams by a statistic, use the following:
 ```
