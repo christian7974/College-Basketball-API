@@ -8,7 +8,9 @@ const Team = require('./models/teamModel');
 
 const app = express();
 
+const NODE_ENV = process.env.NODE_ENV;
 const MONGO_URL = process.env.MONGO_URL;
+const DEV_URL = process.env.DEV_URL;
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
@@ -19,8 +21,16 @@ app.get('/', (req, res) => {
     res.send("Welcome to my College Basketball API");
 });
 
+// Conditional to toggle the ability to write to the database (only I can do this)
+var currentMONGO_URL = "";
+if (NODE_ENV == "development") {
+    currentMONGO_URL = MONGO_URL;
+} else {
+    currentMONGO_URL = DEV_URL;
+}
+
 mongoose
-.connect(MONGO_URL)
+.connect(currentMONGO_URL)
 .then(() => {
     console.log("connected to mongodb");
     app.listen(PORT, () => {
