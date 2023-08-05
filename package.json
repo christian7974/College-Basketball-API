@@ -1,0 +1,16 @@
+{
+  "name": "college-basketball-api",
+  "version": "1.0.0",
+  "description": "API that can retrieve information for NCAA Men's Basketball Teams.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "author": "Christian Tropeano",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
