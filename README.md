@@ -4,6 +4,7 @@
 ## Description of Project
 This is an API that has the 2023-2024 Statistics of every NCAA DI Men's Basketball team in the country. There is also some functionality to fetch all teams and their stats, fetch a team by name as well as other functions.  
 This project was made using Node.js, Express, Mongoose/MongoDB and hosted on **TBD**.  
+
 ## Challenges I Faced
 Some challenges I faced was figuring out how to address using multiple parameters in the same endpoint (for instance, for the sort function). I learned that you could do something like 
 ```
@@ -33,11 +34,20 @@ where *team_name* is the name of the team that you want to fetch.
 **Important**: If you want to fetch a team that contains spaces (i.e. Oral Roberts, Wright State, etc.), write the name of the team, however replace the spaces with underscores. So instead of ```Oral Roberts```, please use ```Oral_Roberts```.
 
 ### Sort Teams by a Statistic
+[Here is tha table of eligible statistics you can query for](#Table-of-Statistics)
+
 To sort the teams by a statistic, use the following:
 ```
 http://localhost:3000/teams/sort/*stat_to_sort_by*/*asc/des*
 ```
 where *stat_to_sort_by* is that stat that you want to sort the teams by and *asc/des* is whether you want to sort the teams by **asc**ending value or **des**cending value.
+
+### Fetch a Team with the Most/Least of a Statistic
+To find the team with the most/least of a statistic, use:
+```
+http://localhost:3000/teams/extreme/*stat*/*most/least*
+```
+where the stat is the stat you want to check and most/least is which extreme you want.
 
 ### Table of Statistics
 | Abbreviation      | Statistic |

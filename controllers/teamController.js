@@ -65,4 +65,29 @@ const sortTeams = asyncHandler(async(req, res) => {
     }
 });
 
-module.exports = {createTeam, showAllTeams, findTeamByName, sortTeams};
+// Get the team that has the most/least of a statistic
+// 1 -> is the least
+// -1 -> is the most
+const getExtreme = asyncHandler(async(req, res) => {
+    try {
+        const statToGetExtremeOf = req.params['stat'];
+        const whichExtreme = req.params['whichExtreme'].toString();
+        var valToSort = 0;
+
+        if (whichExtreme == "least") {
+            valToSort = 1;
+        } else if (whichExtreme == "most"){
+            valToSort = -1;
+        } else {
+            res.status(404);
+            res.end();
+        }
+
+        const theTeam = await (Team.find({}).sort({[statToGetExtremeOf] : valToSort}).limit(1));
+        res.status(200).json(theTeam);
+    } catch (error) {
+        res.status(500);
+    }
+});
+
+module.exports = {createTeam, showAllTeams, findTeamByName, sortTeams, getExtreme};
