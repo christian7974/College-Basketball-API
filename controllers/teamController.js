@@ -14,7 +14,7 @@ const createTeam = asyncHandler(async(req, res) => {
 // Shows every team and their stats in the database
 const showAllTeams = asyncHandler(async(req, res) => {
     try {
-        const allTeams = await Team.find({});
+        const allTeams = await Team.find({}, {_id: 0, __v: 0});
         res.status(200).json(allTeams);
     } catch (error) {
         res.status(500);
@@ -37,8 +37,8 @@ const findTeamByName = asyncHandler(async(req, res) => {
         var {teamName} = req.params;
         const teamNameNoUnderscores = teamName.replace(/_/g, " "); // Remove the underscore from the team name
         const properTeamName = titleCase(teamNameNoUnderscores); // Put the team name in Title Case (oral roberts vs Oral Roberts)
-        const theTeam = await Team.find({"name": properTeamName});
-        res.status(200).json(theTeam);
+        const theTeam = await Team.find({"name": properTeamName}, {_id: 0, __v: 0});
+        res.status(200).json(theTeam[0]); // The [0] is so the client has a single JSON instead of an array with only one JSON in it
     } catch (error) {
         res.status(500);
     }
@@ -58,7 +58,7 @@ const sortTeams = asyncHandler(async(req, res) => {
             res.status(404);
             res.end();
         }
-        const sortedJSON = await (Team.find().sort({[statToSortBy]: valToSort}));
+        const sortedJSON = await (Team.find({}, {_id: 0, __v: 0}).sort({[statToSortBy]: valToSort}));
         res.status(200).json(sortedJSON);
     } catch (error) {
         res.status(500);
@@ -83,8 +83,8 @@ const getExtreme = asyncHandler(async(req, res) => {
             res.end();
         }
 
-        const theTeam = await (Team.find({}).sort({[statToGetExtremeOf] : valToSort}).limit(1));
-        res.status(200).json(theTeam);
+        const theTeam = await (Team.find({}, {_id: 0, __v: 0}).sort({[statToGetExtremeOf] : valToSort}).limit(1));
+        res.status(200).json(theTeam[0]); // The [0] is so this sends a single JSON instead of an array containing one JSON
     } catch (error) {
         res.status(500);
     }
