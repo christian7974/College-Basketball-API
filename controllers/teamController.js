@@ -1,11 +1,11 @@
 const Team = require('../models/teamModel');
 const asyncHandler = require('express-async-handler');
-
+const everyTeam = require('../teams_list');
 // Creates a team in the Database (used for initialization)
 const createTeam = asyncHandler(async(req, res) => {
     try {
-        const individualTeam = await Team.create(req.body);
-        res.status(200).json(individualTeam);
+        await Team.create(everyTeam); // Add every team into the database
+        res.status(200).send("You have inserted all of the teams!");
     } catch (error) {
         res.status(500);
     }
