@@ -18,12 +18,13 @@ I got the inspiration for this project when I wanted something to help me create
 I made this tool so that other people can have access to statistics about every NCAA Division I and can use that information to make better brackets and to have more fun during March Madness.
 
 ## Features/Functionality
+
 ### Fetch Every Team
 To get all of the statistics of a team, use the following:
 ```
-http://localhost:3000/teams/all
+https://college-basketball-api.onrender.com/teams/all
 ```
-This will send to the client an array of every team as a JSON.
+This will send an array of every team as a JSON object to the client.
 
 ### Fetch One Team By Name:
 To only get one team by name, use the following:
@@ -82,10 +83,157 @@ For instance, if you wanted to sort teams by their 3-point shots attempted per g
 https://college-basketball-api.onrender.com/teams/sort/threePointAttPG/asc
 ```
 
+## Examples/Results Of Use
+1. Fetch One Team By Name  
+    a. If you wanted to find the stats for Gonzaga, use the following:  
+    ```https://college-basketball-api.onrender.com/teams/gonzaga```  
+    which would return the following JSON:
+    ```JSON
+    {
+        "name": "Gonzaga",
+        "pointsPG": 86.1,
+        "fieldGoalsMadePG": 32.1,
+        "fieldGoalsAttPG": 61.7,
+        "FGPercent": 0.521,
+        "threePointMadePG": 7.5,
+        "threePointAttPG": 19.9,
+        "threePointPercent": 0.379,
+        "freeThrowMadePG": 14.4,
+        "freeThrowAttPG": 20.8,
+        "offReboundsPG": 9.7,
+        "defReboundsPG": 25.9,
+        "totalReboundsPG": 35.7,
+        "assistsPG": 16.2,
+        "stealsPG": 7.2,
+        "blocksPG": 3.4,
+        "turnoversPG": 10.6
+    }
+    ```
+
+2. Sort Teams by Statistic  
+    a. If you wanted to sort all of the teams by blocks per game descending, use the following:  
+    ```https://college-basketball-api.onrender.com/teams/sort/blocksPG/asc```  
+    which would send the client an array of every team sorted by blocks per game in descending order:
+    ```JSON
+    [
+        {
+            "name": "Utah Valley",
+            "pointsPG": 77.4,
+            "fieldGoalsMadePG": 27.6,
+            "fieldGoalsAttPG": 59.5,
+            "FGPercent": 0.465,
+            "threePointMadePG": 6.5,
+            "threePointAttPG": 19.7,
+            "threePointPercent": 0.332,
+            "freeThrowMadePG": 15.6,
+            "freeThrowAttPG": 21.1,
+            "offReboundsPG": 9.6,
+            "defReboundsPG": 29.5,
+            "totalReboundsPG": 39.1,
+            "assistsPG": 16.1,
+            "stealsPG": 6.5,
+            "blocksPG": 6.5,
+            "turnoversPG": 13.6
+        },
+        ...
+        {
+            "name": "Virginia Military",
+            "pointsPG": 69.4,
+            "fieldGoalsMadePG": 25,
+            "fieldGoalsAttPG": 60.1,
+            "FGPercent": 0.416,
+            "threePointMadePG": 9.7,
+            "threePointAttPG": 27.5,
+            "threePointPercent": 0.351,
+            "freeThrowMadePG": 9.7,
+            "freeThrowAttPG": 12.7,
+            "offReboundsPG": 9.9,
+            "defReboundsPG": 23.5,
+            "totalReboundsPG": 33.3,
+            "assistsPG": 11.4,
+            "stealsPG": 5.4,
+            "blocksPG": 1.2,
+            "turnoversPG": 12.6
+        }
+    ]
+    ```
+
+3. Fetch a Team with the Extreme of a Stat  
+a. If you wanted to find the team with the most offensive rebounds per game, use the following:  
+```https://college-basketball-api.onrender.com/teams/extreme/offReboundsPG/most```  
+which would result in the following:  
+```JSON
+{
+	"name": "South Carolina State",
+	"pointsPG": 73.5,
+	"fieldGoalsMadePG": 27.1,
+	"fieldGoalsAttPG": 64.1,
+	"FGPercent": 0.422,
+	"threePointMadePG": 6.9,
+	"threePointAttPG": 21.7,
+	"threePointPercent": 0.318,
+	"freeThrowMadePG": 12.5,
+	"freeThrowAttPG": 18.6,
+	"offReboundsPG": 12.7,
+	"defReboundsPG": 20.8,
+	"totalReboundsPG": 33.5,
+	"assistsPG": 14,
+	"stealsPG": 7.2,
+	"blocksPG": 3.3,
+	"turnoversPG": 15.7
+}
+```
+
+4. Fetch Two Teams to Compare  
+If you wanted to compare the statistics of Connecticut and Southern Indiana, the following would be used:
+```https://college-basketball-api.onrender.com/teams/compare/connecticut/southern_indiana```  
+and the outcome would be:
+```JSON
+[
+	{
+		"name": "Connecticut",
+		"pointsPG": 78.6,
+		"fieldGoalsMadePG": 27.7,
+		"fieldGoalsAttPG": 59.8,
+		"FGPercent": 0.464,
+		"threePointMadePG": 9.1,
+		"threePointAttPG": 24.9,
+		"threePointPercent": 0.363,
+		"freeThrowMadePG": 14,
+		"freeThrowAttPG": 18.4,
+		"offReboundsPG": 12.2,
+		"defReboundsPG": 25.6,
+		"totalReboundsPG": 37.7,
+		"assistsPG": 17.5,
+		"stealsPG": 6.3,
+		"blocksPG": 4.9,
+		"turnoversPG": 12.6
+	},
+	{
+		"name": "Southern Indiana",
+		"pointsPG": 75.8,
+		"fieldGoalsMadePG": 26.3,
+		"fieldGoalsAttPG": 60.6,
+		"FGPercent": 0.434,
+		"threePointMadePG": 9.7,
+		"threePointAttPG": 25.9,
+		"threePointPercent": 0.375,
+		"freeThrowMadePG": 13.5,
+		"freeThrowAttPG": 20.1,
+		"offReboundsPG": 11.1,
+		"defReboundsPG": 25.3,
+		"totalReboundsPG": 36.4,
+		"assistsPG": 12.7,
+		"stealsPG": 7.2,
+		"blocksPG": 2.3,
+		"turnoversPG": 13
+	}
+]
+```
+
 ## Features To Be Implemented
-- The ability to fetch multiple teams (to be able to compare all of them)
+- The ability to fetch ~~multiple~~ more than 2 teams (to be able to compare all of them)
 - Compare players (compare players' statistics)
-- Add examples of using endpoints (will do when I deploy the API).
 - More descriptive (and accurate) errors/Error middleware
 
 ## Problem?
@@ -93,7 +241,8 @@ If you notice a problem (a team has the incorrect statistics, some functionality
 - A short but descriptive title about the problem
 - The endpoint that you used that caused the error
 - Steps to replicate that issue
-- An image of your code/the result that the endpoint produced
+- An image of your code/the result that the endpoint produced  
+
 Any more information would be very helpful in debugging and resolving the issue.
 
 
