@@ -47,7 +47,14 @@ To find the team with the most/least of a statistic, use:
 ```
 http://localhost:3000/teams/extreme/*stat*/*most/least*
 ```
-where the stat is the stat you want to check and most/least is which extreme you want.
+where the *stat* is the stat you want to check and *most/least* is which extreme you want.
+
+### Fetch Two Teams to Compare
+If you want to fetch two teams and compare their stats, use the following:
+```
+http://localhost:3000/teams/compare/*team1*/*team2*
+```
+where *team1* is the first team that you want to compare and *team2* is the second team that you want to compare. This returns an array of JSON objects with both teams in the array.
 
 ### Table of Statistics
 | Abbreviation      | Statistic |
@@ -78,6 +85,7 @@ http://localhost:3000/teams/sort/threePointAttPG/asc
 ## Features To Be Implemented
 - The ability to fetch multiple teams (to be able to compare all of them)
 - Compare players (compare players' statistics)
+- Add examples of using endpoints (will do when I deploy the API).
 
 ## Problem?
 If you notice a problem (a team has the incorrect statistics, some functionality does not work, etc.) then please create an issue with a description of the issue and how you reproduced that mishap. A helpful issue would include:

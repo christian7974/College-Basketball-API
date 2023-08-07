@@ -90,4 +90,27 @@ const getExtreme = asyncHandler(async(req, res) => {
     }
 });
 
-module.exports = {createTeam, showAllTeams, findTeamByName, sortTeams, getExtreme};
+// Function to return an array of JSONs of two teams that the client wants to fetch
+const compareTwoTeams = asyncHandler(async(req, res) => {
+    try {
+        var teamOneName = req.params['team1'];
+        var teamTwoName = req.params['team2'];
+        const teamOneNameNoUnderscores = teamOneName.replace(/_/g, " ");
+        const properTeamOneName = titleCase(teamOneNameNoUnderscores);
+        const teamTwoNameNoUnderscores = teamTwoName.replace(/_/g, " ");
+        const properTeamTwoName = titleCase(teamTwoNameNoUnderscores);
+        const bothTeams = await Team.find({
+            "name": {
+                $in : [
+                    properTeamOneName,
+                    properTeamTwoName
+                ]
+            }
+        }, {_id: 0, __v: 0});
+        res.status(200).json(bothTeams);
+    } catch (error) {
+        res.status(500);
+    }
+});
+
+module.exports = {createTeam, showAllTeams, findTeamByName, sortTeams, getExtreme, compareTwoTeams};
