@@ -84,82 +84,84 @@ https://college-basketball-api.onrender.com/teams/sort/threePointAttPG/asc
 ```
 
 ## Examples/Results Of Use
-1. Fetch One Team By Name  
-    a. If you wanted to find the stats for Gonzaga, use the following:  
-    ```https://college-basketball-api.onrender.com/teams/gonzaga```  
-    which would return the following JSON:
-    ```JSON
+
+### 1. Fetch One Team By Name  
+If you wanted to find the stats for Gonzaga, use the following:  
+```https://college-basketball-api.onrender.com/teams/gonzaga```  
+which would return the following JSON:
+
+```JSON
+{
+    "name": "Gonzaga",
+    "pointsPG": 86.1,
+    "fieldGoalsMadePG": 32.1,
+    "fieldGoalsAttPG": 61.7,
+    "FGPercent": 0.521,
+    "threePointMadePG": 7.5,
+    "threePointAttPG": 19.9,
+    "threePointPercent": 0.379,
+    "freeThrowMadePG": 14.4,
+    "freeThrowAttPG": 20.8,
+    "offReboundsPG": 9.7,
+    "defReboundsPG": 25.9,
+    "totalReboundsPG": 35.7,
+    "assistsPG": 16.2,
+    "stealsPG": 7.2,
+    "blocksPG": 3.4,
+    "turnoversPG": 10.6
+}
+```
+
+### 2. Sort Teams by Statistic  
+If you wanted to sort all of the teams by blocks per game descending, use the following:  
+```https://college-basketball-api.onrender.com/teams/sort/blocksPG/asc```  
+which would send the client an array of every team sorted by blocks per game in descending order:
+```JSON
+[
     {
-        "name": "Gonzaga",
-        "pointsPG": 86.1,
-        "fieldGoalsMadePG": 32.1,
-        "fieldGoalsAttPG": 61.7,
-        "FGPercent": 0.521,
-        "threePointMadePG": 7.5,
-        "threePointAttPG": 19.9,
-        "threePointPercent": 0.379,
-        "freeThrowMadePG": 14.4,
-        "freeThrowAttPG": 20.8,
-        "offReboundsPG": 9.7,
-        "defReboundsPG": 25.9,
-        "totalReboundsPG": 35.7,
-        "assistsPG": 16.2,
-        "stealsPG": 7.2,
-        "blocksPG": 3.4,
-        "turnoversPG": 10.6
+        "name": "Utah Valley",
+        "pointsPG": 77.4,
+        "fieldGoalsMadePG": 27.6,
+        "fieldGoalsAttPG": 59.5,
+        "FGPercent": 0.465,
+        "threePointMadePG": 6.5,
+        "threePointAttPG": 19.7,
+        "threePointPercent": 0.332,
+        "freeThrowMadePG": 15.6,
+        "freeThrowAttPG": 21.1,
+        "offReboundsPG": 9.6,
+        "defReboundsPG": 29.5,
+        "totalReboundsPG": 39.1,
+        "assistsPG": 16.1,
+        "stealsPG": 6.5,
+        "blocksPG": 6.5,
+        "turnoversPG": 13.6
+    },
+    ...
+    {
+        "name": "Virginia Military",
+        "pointsPG": 69.4,
+        "fieldGoalsMadePG": 25,
+        "fieldGoalsAttPG": 60.1,
+        "FGPercent": 0.416,
+        "threePointMadePG": 9.7,
+        "threePointAttPG": 27.5,
+        "threePointPercent": 0.351,
+        "freeThrowMadePG": 9.7,
+        "freeThrowAttPG": 12.7,
+        "offReboundsPG": 9.9,
+        "defReboundsPG": 23.5,
+        "totalReboundsPG": 33.3,
+        "assistsPG": 11.4,
+        "stealsPG": 5.4,
+        "blocksPG": 1.2,
+        "turnoversPG": 12.6
     }
-    ```
+]
+```
 
-2. Sort Teams by Statistic  
-    a. If you wanted to sort all of the teams by blocks per game descending, use the following:  
-    ```https://college-basketball-api.onrender.com/teams/sort/blocksPG/asc```  
-    which would send the client an array of every team sorted by blocks per game in descending order:
-    ```JSON
-    [
-        {
-            "name": "Utah Valley",
-            "pointsPG": 77.4,
-            "fieldGoalsMadePG": 27.6,
-            "fieldGoalsAttPG": 59.5,
-            "FGPercent": 0.465,
-            "threePointMadePG": 6.5,
-            "threePointAttPG": 19.7,
-            "threePointPercent": 0.332,
-            "freeThrowMadePG": 15.6,
-            "freeThrowAttPG": 21.1,
-            "offReboundsPG": 9.6,
-            "defReboundsPG": 29.5,
-            "totalReboundsPG": 39.1,
-            "assistsPG": 16.1,
-            "stealsPG": 6.5,
-            "blocksPG": 6.5,
-            "turnoversPG": 13.6
-        },
-        ...
-        {
-            "name": "Virginia Military",
-            "pointsPG": 69.4,
-            "fieldGoalsMadePG": 25,
-            "fieldGoalsAttPG": 60.1,
-            "FGPercent": 0.416,
-            "threePointMadePG": 9.7,
-            "threePointAttPG": 27.5,
-            "threePointPercent": 0.351,
-            "freeThrowMadePG": 9.7,
-            "freeThrowAttPG": 12.7,
-            "offReboundsPG": 9.9,
-            "defReboundsPG": 23.5,
-            "totalReboundsPG": 33.3,
-            "assistsPG": 11.4,
-            "stealsPG": 5.4,
-            "blocksPG": 1.2,
-            "turnoversPG": 12.6
-        }
-    ]
-    ```
-
-3. Fetch a Team with the Extreme of a Stat  
-a. If you wanted to find the team with the most offensive rebounds per game, use the following:  
+### 3. Fetch a Team with the Extreme of a Stat  
+If you wanted to find the team with the most offensive rebounds per game, use the following:  
 ```https://college-basketball-api.onrender.com/teams/extreme/offReboundsPG/most```  
 which would result in the following:  
 ```JSON
@@ -184,7 +186,7 @@ which would result in the following:
 }
 ```
 
-4. Fetch Two Teams to Compare  
+### 4. Fetch Two Teams to Compare  
 If you wanted to compare the statistics of Connecticut and Southern Indiana, the following would be used:
 ```https://college-basketball-api.onrender.com/teams/compare/connecticut/southern_indiana```  
 and the outcome would be:
