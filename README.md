@@ -1,6 +1,6 @@
 # College-Basketball-API
 ### Christian Tropeano
-### Will Update Endpoints when I deploy API
+
 ## Description of Project
 This is an API that has the 2023-2024 Statistics of every NCAA DI Men's Basketball team in the country. There is also some functionality to fetch all teams and their stats, fetch a team by name as well as other functions.  
 This project was made using Node.js, Express, Mongoose/MongoDB and hosted on **TBD**.  
@@ -28,7 +28,7 @@ This will send to the client an array of every team as a JSON.
 ### Fetch One Team By Name:
 To only get one team by name, use the following:
 ```
-http://localhost:3000/teams/*team_name*
+https://college-basketball-api.onrender.com/teams/*team_name*
 ```
 where *team_name* is the name of the team that you want to fetch.
 **Important**: If you want to fetch a team that contains spaces (i.e. Oral Roberts, Wright State, etc.), write the name of the team, however replace the spaces with underscores. So instead of ```Oral Roberts```, please use ```Oral_Roberts```.
@@ -38,21 +38,21 @@ where *team_name* is the name of the team that you want to fetch.
 
 To sort the teams by a statistic, use the following:
 ```
-http://localhost:3000/teams/sort/*stat_to_sort_by*/*asc/des*
+https://college-basketball-api.onrender.com/teams/sort/*stat_to_sort_by*/*asc/des*
 ```
 where *stat_to_sort_by* is that stat that you want to sort the teams by and *asc/des* is whether you want to sort the teams by **asc**ending value or **des**cending value.
 
 ### Fetch a Team with the Most/Least of a Statistic
 To find the team with the most/least of a statistic, use:
 ```
-http://localhost:3000/teams/extreme/*stat*/*most/least*
+https://college-basketball-api.onrender.com/teams/extreme/*stat*/*most/least*
 ```
 where the *stat* is the stat you want to check and *most/least* is which extreme you want.
 
 ### Fetch Two Teams to Compare
 If you want to fetch two teams and compare their stats, use the following:
 ```
-http://localhost:3000/teams/compare/*team1*/*team2*
+https://college-basketball-api.onrender.com/teams/compare/*team1*/*team2*
 ```
 where *team1* is the first team that you want to compare and *team2* is the second team that you want to compare. This returns an array of JSON objects with both teams in the array.
 
@@ -79,7 +79,7 @@ where *team1* is the first team that you want to compare and *team2* is the seco
 
 For instance, if you wanted to sort teams by their 3-point shots attempted per game ascending, it would look something like:
 ```
-http://localhost:3000/teams/sort/threePointAttPG/asc
+https://college-basketball-api.onrender.com/teams/sort/threePointAttPG/asc
 ```
 
 ## Features To Be Implemented
