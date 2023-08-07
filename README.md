@@ -1,32 +1,39 @@
 # College-Basketball-API
-### Christian Tropeano
 
-## Description of Project
+# Table of Contents
+1. [Features/Functionality](#featuresfunctionality)
+2. [Table of Statistics](#table-of-statistics)
+3. [Examples/Results of Use](#examplesresults-of-use)
+4. [Problem/How to Contribute](#problem)
+
+# Description of Project
 This is an API that has the 2023-2024 Statistics of every NCAA DI Men's Basketball team in the country. There is also some functionality to fetch all teams and their stats, fetch a team by name as well as other functions.  
-This project was made using Node.js, Express, Mongoose/MongoDB and hosted on **TBD**.  
 
-## Challenges I Faced
-Some challenges I faced was figuring out how to address using multiple parameters in the same endpoint (for instance, for the sort function). I learned that you could do something like 
+This project was made using Node.js, Express, Mongoose/MongoDB and hosted on Render.  
+
+# Challenges I Faced
+One challenge I faced was figuring out how to address using multiple parameters in the same endpoint (for instance, for the sort function). I learned that you could do something like 
 ```
 const parameter1 = req.params['parameter1'];
 const parameter2 = req.params['parameter2'];
 ```
 and by doing so, you can access multiple parameters and use both of them to fetch information.  
 
-## Inspiration
-I got the inspiration for this project when I wanted something to help me create a bracket for March Madness. I could not find a tool that listen out every statistic for a team (ESPN did not have enough statistics to make a good decision). The ones that did were either really difficult to use or were not free.  
-I made this tool so that other people can have access to statistics about every NCAA Division I and can use that information to make better brackets and to have more fun during March Madness.
+# Inspiration
+I got the inspiration for this project when I wanted something to help me create a bracket for March Madness. I could not find a tool that listed out every statistic for a team (ESPN did not have enough statistics to make a good decision). The ones that did were either really difficult to use or were not free.  
 
-## Features/Functionality
+I made this tool so that other people can have access to statistics about every NCAA Division I Men's Basketball team and can use that information to make better brackets and to have more fun during March Madness.
 
-### Fetch Every Team
+# Features/Functionality
+
+## Fetch Every Team
 To get all of the statistics of a team, use the following:
 ```
 https://college-basketball-api.onrender.com/teams/all
 ```
 This will send an array of every team as a JSON object to the client.
 
-### Fetch One Team By Name:
+## Fetch One Team By Name:
 To only get one team by name, use the following:
 ```
 https://college-basketball-api.onrender.com/teams/*team_name*
@@ -34,7 +41,7 @@ https://college-basketball-api.onrender.com/teams/*team_name*
 where *team_name* is the name of the team that you want to fetch.
 **Important**: If you want to fetch a team that contains spaces (i.e. Oral Roberts, Wright State, etc.), write the name of the team, however replace the spaces with underscores. So instead of ```Oral Roberts```, please use ```Oral_Roberts```.
 
-### Sort Teams by a Statistic
+## Sort Teams by a Statistic
 [Here is the table of eligible statistics you can query for](#table-of-statistics)
 
 To sort the teams by a statistic, use the following:
@@ -43,24 +50,24 @@ https://college-basketball-api.onrender.com/teams/sort/*stat_to_sort_by*/*asc/de
 ```
 where *stat_to_sort_by* is that stat that you want to sort the teams by and *asc/des* is whether you want to sort the teams by **asc**ending value or **des**cending value.
 
-### Fetch a Team with the Most/Least of a Statistic
+## Fetch a Team with the Most/Least of a Statistic
 To find the team with the most/least of a statistic, use:
 ```
 https://college-basketball-api.onrender.com/teams/extreme/*stat*/*most/least*
 ```
-where the *stat* is the stat you want to check and *most/least* is which extreme you want.
+where the *stat* is the stat you want to check and *most/least* is which extreme you want (*most* being the team with the highest of that stat, least being the lowest of that stat).
 
-### Fetch Two Teams to Compare
+## Fetch Two Teams to Compare
 If you want to fetch two teams and compare their stats, use the following:
 ```
 https://college-basketball-api.onrender.com/teams/compare/*team1*/*team2*
 ```
 where *team1* is the first team that you want to compare and *team2* is the second team that you want to compare. This returns an array of JSON objects with both teams in the array.
 
-### Table of Statistics
+## Table of Statistics
 | Abbreviation      | Statistic |
 | --------          | -------   |
-| pointsPG          | The points per game that that team score |
+| pointsPG          | The points per game that the team scored |
 | fieldGoalsMadePG  | The field goals made per game |
 | fieldGoalsAttPG   | The amount of field goals attempted per game |
 | FGPercent         | The percent of field goals that the team made throughout the season |
@@ -69,7 +76,7 @@ where *team1* is the first team that you want to compare and *team2* is the seco
 | threePointPercent | The percent that the team shot from 3 per game |
 | freeThrowMadePG   | The number of free throw shots made per game |
 | freeThrowAttPG    | The number of free throw shots attempted per game |
-| freeThrowPercent  | The percentage of free throws that a team made throughout the season |
+| freeThrowPercent  | The percent of free throws that a team made throughout the season |
 | offReboundsPG     | The amount of offensive rebounds a team secured per game |
 | defReboundsPG     | The amount of defensive rebounds a team secured per game  |
 | totalReboundsPG   | The amount of total rebounds a team secured per game  |
@@ -83,9 +90,9 @@ For instance, if you wanted to sort teams by their 3-point shots attempted per g
 https://college-basketball-api.onrender.com/teams/sort/threePointAttPG/asc
 ```
 
-## Examples/Results Of Use
+# Examples/Results Of Use
 
-### 1. Fetch One Team By Name  
+## 1. Fetch One Team By Name  
 If you wanted to find the stats for Gonzaga, use the following:  
 ```https://college-basketball-api.onrender.com/teams/gonzaga```  
 which would return the following JSON:
@@ -112,7 +119,7 @@ which would return the following JSON:
 }
 ```
 
-### 2. Sort Teams by Statistic  
+## 2. Sort Teams by Statistic  
 If you wanted to sort all of the teams by blocks per game descending, use the following:  
 ```https://college-basketball-api.onrender.com/teams/sort/blocksPG/asc```  
 which would send the client an array of every team sorted by blocks per game in descending order:
@@ -160,7 +167,7 @@ which would send the client an array of every team sorted by blocks per game in 
 ]
 ```
 
-### 3. Fetch a Team with the Extreme of a Stat  
+## 3. Fetch a Team with the Extreme of a Stat  
 If you wanted to find the team with the most offensive rebounds per game, use the following:  
 ```https://college-basketball-api.onrender.com/teams/extreme/offReboundsPG/most```  
 which would result in the following:  
@@ -186,7 +193,7 @@ which would result in the following:
 }
 ```
 
-### 4. Fetch Two Teams to Compare  
+## 4. Fetch Two Teams to Compare  
 If you wanted to compare the statistics of Connecticut and Southern Indiana, the following would be used:
 ```https://college-basketball-api.onrender.com/teams/compare/connecticut/southern_indiana```  
 and the outcome would be:
@@ -233,17 +240,18 @@ and the outcome would be:
 ]
 ```
 
-## Features To Be Implemented
+# Features To Be Implemented
 - The ability to fetch ~~multiple~~ more than 2 teams (to be able to compare all of them)
 - Compare players (compare players' statistics)
-- More descriptive (and accurate) errors/Error middleware
+- More descriptive (and accurate) errors/Error middleware  
+If you have an idea for extra functionality/anything involving the API, please make an issue explaining your idea and I would be happy to take a look.
 
-## Problem?
-If you notice a problem (a team has the incorrect statistics, some functionality does not work, etc.) then please create an issue with a description of the issue and how you reproduced that mishap. A helpful issue would include:
+# Problem?
+If you notice a problem (a team has an incorrect value for a statistic, some functionality does not work, etc.) then please create an issue with a description of the issue and how you reproduced that mishap. A helpful issue would include:
 - A short but descriptive title about the problem
-- The endpoint that you used that caused the error
+- The URL that you used that caused the error
 - Steps to replicate that issue
-- An image of your code/the result that the endpoint produced  
+- An image of your code and the result that the endpoint produced  
 
 Any more information would be very helpful in debugging and resolving the issue.
 
