@@ -17,7 +17,11 @@ One challenge I faced was figuring out how to address using multiple parameters 
 const parameter1 = req.params['parameter1'];
 const parameter2 = req.params['parameter2'];
 ```
-and by doing so, you can access multiple parameters and use both of them to fetch information.  
+and by doing so, you can access multiple parameters and use both of them to fetch information. 
+
+Another challenge that I faced was learning how to use MongoDB and Mongoose, as this was my first project using a NoSQL database. However, it was very easy to learn and I enjoyed using it throughout this project.  
+
+Another challenge that I faced (and continue to face) is what functionality to add to the API. One thing that helped me come up with functionality was thinking about what I would do with the data if I needed this information. This is how I came up with the idea for the idea of fetching two teams, getting the team with the highest/lowest of a statistic as well as sorting teams by a statistic.
 
 # Inspiration
 I got the inspiration for this project when I wanted something to help me create a bracket for March Madness. I could not find a tool that listed out every statistic for a team (ESPN did not have enough statistics to make a good decision). The ones that did were either really difficult to use or were not free.  
@@ -27,11 +31,11 @@ I made this tool so that other people can have access to statistics about every 
 # Features/Functionality
 
 ## Fetch Every Team
-To get all of the statistics of a team, use the following:
+To fetch every team and their statistics, use the following:
 ```
 https://college-basketball-api.onrender.com/teams/all
 ```
-This will send an array of every team as a JSON object to the client.
+This will send an array of every team as a JSON object to the client. **This is automatically sorted by points scored per game**.
 
 ## Fetch One Team By Name:
 To only get one team by name, use the following:
@@ -94,7 +98,9 @@ https://college-basketball-api.onrender.com/teams/sort/threePointAttPG/asc
 
 ## 1. Fetch One Team By Name  
 If you wanted to find the stats for Gonzaga, use the following:  
-```https://college-basketball-api.onrender.com/teams/gonzaga```  
+```
+https://college-basketball-api.onrender.com/teams/gonzaga
+```  
 which would return the following JSON:
 
 ```JSON
@@ -121,7 +127,9 @@ which would return the following JSON:
 
 ## 2. Sort Teams by Statistic  
 If you wanted to sort all of the teams by blocks per game descending, use the following:  
-```https://college-basketball-api.onrender.com/teams/sort/blocksPG/asc```  
+```
+https://college-basketball-api.onrender.com/teams/sort/blocksPG/asc
+```  
 which would send the client an array of every team sorted by blocks per game in descending order:
 ```JSON
 [
@@ -169,7 +177,9 @@ which would send the client an array of every team sorted by blocks per game in 
 
 ## 3. Fetch a Team with the Extreme of a Stat  
 If you wanted to find the team with the most offensive rebounds per game, use the following:  
-```https://college-basketball-api.onrender.com/teams/extreme/offReboundsPG/most```  
+```
+https://college-basketball-api.onrender.com/teams/extreme/offReboundsPG/most
+```  
 which would result in the following:  
 ```JSON
 {
@@ -195,7 +205,9 @@ which would result in the following:
 
 ## 4. Fetch Two Teams to Compare  
 If you wanted to compare the statistics of Connecticut and Southern Indiana, the following would be used:
-```https://college-basketball-api.onrender.com/teams/compare/connecticut/southern_indiana```  
+```
+https://college-basketball-api.onrender.com/teams/compare/connecticut/southern_indiana
+```  
 and the outcome would be:
 ```JSON
 [
@@ -244,6 +256,7 @@ and the outcome would be:
 - The ability to fetch ~~multiple~~ more than 2 teams (to be able to compare all of them)
 - Compare players (compare players' statistics)
 - More descriptive (and accurate) errors/Error middleware  
+
 If you have an idea for extra functionality/anything involving the API, please make an issue explaining your idea and I would be happy to take a look.
 
 # Problem?
