@@ -86,6 +86,7 @@ http://localhost:3000/teams/sort/threePointAttPG/asc
 - The ability to fetch multiple teams (to be able to compare all of them)
 - Compare players (compare players' statistics)
 - Add examples of using endpoints (will do when I deploy the API).
+- More descriptive (and accurate) errors/Error middleware
 
 ## Problem?
 If you notice a problem (a team has the incorrect statistics, some functionality does not work, etc.) then please create an issue with a description of the issue and how you reproduced that mishap. A helpful issue would include:

@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
-
+var cors = require('cors');
 const teamRoute = require('./routes/teamRoute');
 const Team = require('./models/teamModel');
 
@@ -13,6 +13,7 @@ const MONGO_URL = process.env.MONGO_URL;
 const DEV_URL = process.env.DEV_URL;
 const PORT = process.env.PORT || 3000;
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use('/teams', teamRoute);
