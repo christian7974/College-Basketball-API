@@ -1,6 +1,6 @@
 const Team = require('../models/teamModel');
 const asyncHandler = require('express-async-handler');
-const everyTeam = require('../pretty_print_stats.json');
+// const everyTeam = require('../pretty_print_stats.json');
 // Creates a team in the Database (used for initialization)
 const createTeam = asyncHandler(async(req, res) => {
     try {
