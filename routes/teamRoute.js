@@ -4,7 +4,7 @@ const Team = require('../models/teamModel');
 
 const router = express.Router();
 
-const {createTeam, showAllTeams, findTeamByName, sortTeams, getExtreme, compareTwoTeams} = require('../controllers/teamController');
+const {createTeam, showAllTeams, findTeamByName, sortTeams, getExtreme, compareTwoTeams, clearDatabase} = require('../controllers/teamController');
 
 // Add Team
 router.post('/', createTeam);
@@ -23,5 +23,7 @@ router.get('/extreme/:stat/:whichExtreme', getExtreme);
 
 // Compare the stats of two teams
 router.get('/compare/:team1/:team2', compareTwoTeams);
+
+router.delete('/', clearDatabase);
 
 module.exports = router;

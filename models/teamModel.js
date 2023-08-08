@@ -43,7 +43,7 @@ const teamSchema = mongoose.Schema({
         type: Number
     },
     // free throw percentage
-    freeeThrowPercent: {
+    freeThrowPercent: {
         type: Number
     },
     // offensive rebounds per game
