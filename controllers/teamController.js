@@ -1,7 +1,28 @@
 const Team = require('../models/teamModel');
 const asyncHandler = require('express-async-handler');
 // const everyTeam = require('../pretty_print_stats.json');
+const everyTeamArray = require('../teams_list');
 // Creates a team in the Database (used for initialization)
+const arrayOfStats = ["pointsPG", "fieldGoalsMadePG", "fieldGoalsAttPG" ,"FGPercent", "threePointMadePG", "threePointAttPG", "threePointPercent", "freeThrowMadePG",
+    "freeThrowAttPG", "freeThrowPercent", "offReboundsPG", "defReboundsPG", "totalReboundsPG", "assistsPG", "stealsPG", "blocksPG", "turnoversPG"];
+
+const statExists = function(inputtedStat) {
+    if (!arrayOfStats.includes(inputtedStat)) {
+        return false;
+    } else {
+        return true;
+    }
+};
+
+const teamExists = function(inputtedTeam) {
+    for (var i = 0; i < everyTeamArray.length; i ++) {
+        if (inputtedTeam === everyTeamArray[i].name) {
+            return true;
+        }
+    }
+    return false;
+};
+
 const createTeam = asyncHandler(async(req, res) => {
     try {
         await Team.create(everyTeam); // Add every team into the database
@@ -11,6 +32,7 @@ const createTeam = asyncHandler(async(req, res) => {
     }
 });
 
+// Clears the database
 const clearDatabase = asyncHandler(async(req, res) => {
     try {
         await Team.deleteMany({}); // Remove every team from the database
@@ -24,6 +46,7 @@ const clearDatabase = asyncHandler(async(req, res) => {
 const showAllTeams = asyncHandler(async(req, res) => {
     try {
         const allTeams = await Team.find({}, {_id: 0, __v: 0});
+        getArrayOfTeamNames();
         res.status(200).json(allTeams);
     } catch (error) {
         res.status(500);
@@ -34,10 +57,10 @@ const showAllTeams = asyncHandler(async(req, res) => {
 function titleCase(str) {
     str = str.toLowerCase().split(' ');
     for (var i = 0; i < str.length; i++) {
-      str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+        str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
     }
     return str.join(' ');
-  }
+}
 
 // Function that can find a team by the name passed in as a parameter
 // If the team name has a space, then type the name with underscores (i.e. Oral_Roberts for Oral Roberts)
@@ -46,6 +69,11 @@ const findTeamByName = asyncHandler(async(req, res) => {
         var {teamName} = req.params;
         const teamNameNoUnderscores = teamName.replace(/_/g, " "); // Remove the underscore from the team name
         const properTeamName = titleCase(teamNameNoUnderscores); // Put the team name in Title Case (oral roberts vs Oral Roberts)
+        if (!teamExists(properTeamName)) {
+            res.status(400);
+            res.write(properTeamName + " is not in the database of teams. Please try another team.")
+            res.end();
+        }
         const theTeam = await Team.find({"name": properTeamName}, {_id: 0, __v: 0});
         res.status(200).json(theTeam[0]); // The [0] is so the client has a single JSON instead of an array with only one JSON in it
     } catch (error) {
@@ -57,14 +85,17 @@ const sortTeams = asyncHandler(async(req, res) => {
     try {
         const statToSortBy = req.params['stat'];
         const order = req.params['order'].toString();
-
+        if (!statExists(statToSortBy)) {
+            res.status(400).json({error: statToSortBy + " is not a valid statistic to sort by. Please use another statistic."});
+            res.end();
+        }
         var valToSort = 0;
         if (order == "asc") {
             valToSort = 1;
         } else if (order == "des"){
             valToSort = -1;
         } else {
-            res.status(404);
+            res.status(400).json({error: order + " is not a valid parameter. Please use either asc or des."});
             res.end();
         }
         const sortedJSON = await (Team.find({}, {_id: 0, __v: 0}).sort({[statToSortBy]: valToSort}));
@@ -80,6 +111,10 @@ const sortTeams = asyncHandler(async(req, res) => {
 const getExtreme = asyncHandler(async(req, res) => {
     try {
         const statToGetExtremeOf = req.params['stat'];
+        if (!statExists(statToGetExtremeOf)) {
+            res.status(400).json({error: statToGetExtremeOf + " is not a valid statistic. Please refer to documentation to find a proper stat."});
+            res.end();
+        };
         const whichExtreme = req.params['whichExtreme'].toString();
         var valToSort = 0;
 
@@ -88,7 +123,7 @@ const getExtreme = asyncHandler(async(req, res) => {
         } else if (whichExtreme == "most"){
             valToSort = -1;
         } else {
-            res.status(404);
+            res.status(400).json({error: whichExtreme + " is not a valid extreme. Please use either most for the highest or least for the lowest."});
             res.end();
         }
 
@@ -108,6 +143,13 @@ const compareTwoTeams = asyncHandler(async(req, res) => {
         const properTeamOneName = titleCase(teamOneNameNoUnderscores);
         const teamTwoNameNoUnderscores = teamTwoName.replace(/_/g, " ");
         const properTeamTwoName = titleCase(teamTwoNameNoUnderscores);
+        if (!teamExists(properTeamOneName)) {
+            res.status(400).json({error: properTeamOneName + " is not in the database of teams. Please try another team."});
+            res.end();
+        } else if (!teamExists(properTeamTwoName)) {
+            res.status(400).json({error: properTeamTwoName + " is not in the database of teams. Please try another team."});
+            res.end();
+        };
         const bothTeams = await Team.find({
             "name": {
                 $in : [
