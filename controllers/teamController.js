@@ -112,7 +112,7 @@ const getExtreme = asyncHandler(async(req, res) => {
     try {
         const statToGetExtremeOf = req.params['stat'];
         if (!statExists(statToGetExtremeOf)) {
-            res.status(400).json({error: statToGetExtremeOf + " is not a valid statistic. Please refer to documentation to find a proper stat."});
+            res.status(400).json({error: statToGetExtremeOf + " is not a valid statistic. Please refer to documentation to find a proper statistic."});
             res.end();
         };
         const whichExtreme = req.params['whichExtreme'].toString();
@@ -143,7 +143,10 @@ const compareTwoTeams = asyncHandler(async(req, res) => {
         const properTeamOneName = titleCase(teamOneNameNoUnderscores);
         const teamTwoNameNoUnderscores = teamTwoName.replace(/_/g, " ");
         const properTeamTwoName = titleCase(teamTwoNameNoUnderscores);
-        if (!teamExists(properTeamOneName)) {
+        if (!teamExists(properTeamOneName) && !teamExists(properTeamTwoName)) {
+            res.status(400).json({error: properTeamOneName + " and " + properTeamTwoName + " are not in the database of teams. Please use two different teams."});
+            res.end();
+        } else if (!teamExists(properTeamOneName)) {
             res.status(400).json({error: properTeamOneName + " is not in the database of teams. Please try another team."});
             res.end();
         } else if (!teamExists(properTeamTwoName)) {
