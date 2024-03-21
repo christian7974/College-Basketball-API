@@ -19,7 +19,7 @@ if response.status_code == 200:
         for td in all_tds:
             if (td['data-stat'] != "DUMMY"):
                 # this prints out each stat with the number
-                print(td['data-stat'] + " " + td.text)
+                # print(td['data-stat'] + " " + td.text)
                 # file.write("\n")
                 # if (td['data-stat'] == "school_name"):
                 #     if len(td.text.split()) > 1:
@@ -37,15 +37,13 @@ if response.status_code == 200:
                         individual_team[td['data-stat']] = 0
                     else:
                         individual_team[td['data-stat']] = float(td.text)
-                array_of_teams.append(individual_team)
+        array_of_teams.append(individual_team)
 
 else:
     print("Error: " + str(response.status_code))
-print(array_of_teams[0])
+# print(array_of_teams[0])
 # write the array to a json file
 # pretty print the array of json objects
 with(open("teams.json", "w")) as file:
     file.write(json.dumps(array_of_teams, indent=4))
 # write the array to a json file
-# with(open("teams.json", "w")) as file:
-#     file.write(json.dumps(array_of_teams))

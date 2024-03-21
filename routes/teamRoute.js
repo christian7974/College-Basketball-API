@@ -1,7 +1,5 @@
 const express = require('express');
 
-const Team = require('../models/teamModel');
-
 const router = express.Router();
 
 const {createTeam, showAllTeams, findTeamByName, sortTeams, getExtreme, compareTwoTeams, clearDatabase} = require('../controllers/teamController');
