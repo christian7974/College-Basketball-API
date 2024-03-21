@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+// This is the backend schema for an individual team
+
 const teamSchema = mongoose.Schema({
     // team name
     name: {
