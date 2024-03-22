@@ -152,7 +152,7 @@ const compareTwoTeams = asyncHandler(async(req, res) => {
             res.end();
         };
         const bothTeams = await Team.find({
-            "name": {
+            "school_name": {
                 $in : [
                     properTeamOneName,
                     properTeamTwoName
