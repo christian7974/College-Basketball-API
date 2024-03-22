@@ -46,4 +46,7 @@ else:
 # pretty print the array of json objects
 with(open("teams.json", "w")) as file:
     file.write(json.dumps(array_of_teams, indent=4))
+
+# list_of_properties = list(array_of_teams[3].keys())
+# print(list_of_properties)
 # write the array to a json file

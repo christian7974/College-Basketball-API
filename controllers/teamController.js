@@ -3,8 +3,7 @@ const asyncHandler = require('express-async-handler');
 const everyTeam = require('../teams');
 const everyTeamArray = require('../teams_list');
 // Creates a team in the Database (used for initialization)
-const arrayOfStats = ["pointsPG", "fieldGoalsMadePG", "fieldGoalsAttPG" ,"FGPercent", "threePointMadePG", "threePointAttPG", "threePointPercent", "freeThrowMadePG",
-    "freeThrowAttPG", "freeThrowPercent", "offReboundsPG", "defReboundsPG", "totalReboundsPG", "assistsPG", "stealsPG", "blocksPG", "turnoversPG"];
+const arrayOfStats = ['school_name', 'g', 'wins', 'losses', 'win_loss_pct', 'srs', 'sos', 'wins_conf', 'losses_conf', 'wins_home', 'losses_home', 'wins_visitor', 'losses_visitor', 'pts', 'opp_pts', 'mp', 'fg', 'fga', 'fg_pct', 'fg3', 'fg3a', 'fg3_pct', 'ft', 'fta', 'ft_pct', 'orb', 'trb', 'ast', 'stl', 'blk', 'tov', 'pf'];
 
 const statExists = function(inputtedStat) {
     if (!arrayOfStats.includes(inputtedStat)) {
@@ -73,7 +72,7 @@ const findTeamByName = asyncHandler(async(req, res) => {
             res.write(properTeamName + " is not in the database of teams. Please try another team.")
             res.end();
         }
-        const theTeam = await Team.find({"name": properTeamName}, {_id: 0, __v: 0});
+        const theTeam = await Team.find({"school_name": properTeamName}, {_id: 0, __v: 0});
         res.status(200).json(theTeam[0]); // The [0] is so the client has a single JSON instead of an array with only one JSON in it
     } catch (error) {
         res.status(500);
