@@ -24,6 +24,7 @@ app.get('/', (req, res) => {
 
 // Conditional to toggle the ability to write to the database (only I can do this)
 var currentMONGO_URL = "";
+// either development or production
 if (NODE_ENV == "development") {
     currentMONGO_URL = MONGO_URL;
 } else {

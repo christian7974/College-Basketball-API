@@ -1,77 +1,121 @@
 const mongoose = require('mongoose');
 
+// This is the backend schema for an individual team
+
 const teamSchema = mongoose.Schema({
     // team name
-    name: {
+    school_name: {
         type: String,
         required: [true, "Every team must have a name"]
     },
     // points per game
-    pointsPG: {
+    games: {
         type: Number
     },
     // field goals made per game
-    fieldGoalsMadePG: {
+    wins: {
         type: Number
     },
     // field goal attempts per game
-    fieldGoalsAttPG: {
+    losses: {
         type: Number
     },
     // field goal percent per game
-    FGPercent: {
+    win_loss_pct: {
         type: Number
     },
     // 3 point shots made per game
-    threePointMadePG: {
+    srs: {
         type: Number
     },
     // 3 point shots attempted per game
-    threePointAttPG: {
+    sos: {
         type: Number
     },
     // 3 point percentage
-    threePointPercent: {
+    wins_conf: {
         type: Number
     },
     // free throws made per game
-    freeThrowMadePG: {
+    losses_conf: {
         type: Number
     },
     // free throws attempted per game
-    freeThrowAttPG: {
+    wins_home: {
         type: Number
     },
     // free throw percentage
-    freeThrowPercent: {
+    losses_home: {
         type: Number
     },
     // offensive rebounds per game
-    offReboundsPG: {
+    wins_visitor: {
         type: Number
     },
     // defensive rebounds per game
-    defReboundsPG: {
+    losses_visitor: {
         type: Number
     },
     // total rebounds per game
-    totalReboundsPG: {
+    pts: {
         type: Number
     },
     // assists per game
-    assistsPG: {
+    opp_pts: {
         type: Number
     },
     // steals per game
-    stealsPG: {
+    mp: {
         type: Number
     },
     // blocks per game
-    blocksPG: {
+    fg: {
         type: Number
     },
     // turnovers committed per game
-    turnoversPG: {
+    fga: {
+        type: Number
+    },
+    fg_pct: {
+        type: Number
+    },
+    fg3: {
+        type: Number
+    },
+    fg3a: {
+        type: Number
+    },
+    fg3_pct: {
+        type: Number
+    },
+    ft: {
+        type: Number
+    },
+    fta: {
+        type: Number
+    },
+    ft_pct: {
+        type: Number
+    },
+    orb: {
+        type: Number
+    },
+    trb: {
+        type: Number
+    },
+    ast: {
+        type: Number
+    },
+    stl: {
+        type: Number
+    },
+    blk: {
+        type: Number
+    },
+    tov: {
+        type: Number
+    },
+    pf: {
         type: Number
     },
 });

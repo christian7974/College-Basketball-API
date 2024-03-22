@@ -1,10 +1,9 @@
 const Team = require('../models/teamModel');
 const asyncHandler = require('express-async-handler');
-// const everyTeam = require('../pretty_print_stats.json');
-const everyTeamArray = require('../teams_list');
+const everyTeam = require('../teams');
+const everyTeamArray = require('../teams_list.js');
 // Creates a team in the Database (used for initialization)
-const arrayOfStats = ["pointsPG", "fieldGoalsMadePG", "fieldGoalsAttPG" ,"FGPercent", "threePointMadePG", "threePointAttPG", "threePointPercent", "freeThrowMadePG",
-    "freeThrowAttPG", "freeThrowPercent", "offReboundsPG", "defReboundsPG", "totalReboundsPG", "assistsPG", "stealsPG", "blocksPG", "turnoversPG"];
+const arrayOfStats = ['school_name', 'g', 'wins', 'losses', 'win_loss_pct', 'srs', 'sos', 'wins_conf', 'losses_conf', 'wins_home', 'losses_home', 'wins_visitor', 'losses_visitor', 'pts', 'opp_pts', 'mp', 'fg', 'fga', 'fg_pct', 'fg3', 'fg3a', 'fg3_pct', 'ft', 'fta', 'ft_pct', 'orb', 'trb', 'ast', 'stl', 'blk', 'tov', 'pf'];
 
 const statExists = function(inputtedStat) {
     if (!arrayOfStats.includes(inputtedStat)) {
@@ -16,7 +15,7 @@ const statExists = function(inputtedStat) {
 
 const teamExists = function(inputtedTeam) {
     for (var i = 0; i < everyTeamArray.length; i ++) {
-        if (inputtedTeam === everyTeamArray[i].name) {
+        if (inputtedTeam === everyTeamArray[i].school_name) {
             return true;
         }
     }
@@ -46,7 +45,6 @@ const clearDatabase = asyncHandler(async(req, res) => {
 const showAllTeams = asyncHandler(async(req, res) => {
     try {
         const allTeams = await Team.find({}, {_id: 0, __v: 0});
-        getArrayOfTeamNames();
         res.status(200).json(allTeams);
     } catch (error) {
         res.status(500);
@@ -74,7 +72,7 @@ const findTeamByName = asyncHandler(async(req, res) => {
             res.write(properTeamName + " is not in the database of teams. Please try another team.")
             res.end();
         }
-        const theTeam = await Team.find({"name": properTeamName}, {_id: 0, __v: 0});
+        const theTeam = await Team.find({"school_name": properTeamName}, {_id: 0, __v: 0});
         res.status(200).json(theTeam[0]); // The [0] is so the client has a single JSON instead of an array with only one JSON in it
     } catch (error) {
         res.status(500);
@@ -154,7 +152,7 @@ const compareTwoTeams = asyncHandler(async(req, res) => {
             res.end();
         };
         const bothTeams = await Team.find({
-            "name": {
+            "school_name": {
                 $in : [
                     properTeamOneName,
                     properTeamTwoName
