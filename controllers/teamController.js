@@ -1,7 +1,7 @@
 const Team = require('../models/teamModel');
 const asyncHandler = require('express-async-handler');
 const everyTeam = require('../teams');
-const everyTeamArray = require('../teams_list');
+const everyTeamArray = require('../teams_list.js');
 // Creates a team in the Database (used for initialization)
 const arrayOfStats = ['school_name', 'g', 'wins', 'losses', 'win_loss_pct', 'srs', 'sos', 'wins_conf', 'losses_conf', 'wins_home', 'losses_home', 'wins_visitor', 'losses_visitor', 'pts', 'opp_pts', 'mp', 'fg', 'fga', 'fg_pct', 'fg3', 'fg3a', 'fg3_pct', 'ft', 'fta', 'ft_pct', 'orb', 'trb', 'ast', 'stl', 'blk', 'tov', 'pf'];
 
@@ -15,7 +15,7 @@ const statExists = function(inputtedStat) {
 
 const teamExists = function(inputtedTeam) {
     for (var i = 0; i < everyTeamArray.length; i ++) {
-        if (inputtedTeam === everyTeamArray[i].name) {
+        if (inputtedTeam === everyTeamArray[i].school_name) {
             return true;
         }
     }
