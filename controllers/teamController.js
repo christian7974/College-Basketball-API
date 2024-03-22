@@ -1,6 +1,6 @@
 const Team = require('../models/teamModel');
 const asyncHandler = require('express-async-handler');
-// const everyTeam = require('../pretty_print_stats.json');
+const everyTeam = require('../teams');
 const everyTeamArray = require('../teams_list');
 // Creates a team in the Database (used for initialization)
 const arrayOfStats = ["pointsPG", "fieldGoalsMadePG", "fieldGoalsAttPG" ,"FGPercent", "threePointMadePG", "threePointAttPG", "threePointPercent", "freeThrowMadePG",
