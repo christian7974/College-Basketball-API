@@ -67,12 +67,19 @@ const findTeamByName = asyncHandler(async(req, res) => {
         var {teamName} = req.params;
         const teamNameNoUnderscores = teamName.replace(/_/g, " "); // Remove the underscore from the team name
         const properTeamName = titleCase(teamNameNoUnderscores); // Put the team name in Title Case (oral roberts vs Oral Roberts)
-        if (!teamExists(properTeamName)) {
+        
+        const properTeamNameUpper = properTeamName.toUpperCase(); // This was to take into account teams that are acronyms (i.e. UCLA)  
+
+        if (!teamExists(properTeamName) && !teamExists(properTeamNameUpper)) {
             res.status(400);
             res.write(properTeamName + " is not in the database of teams. Please try another team.")
             res.end();
         }
-        const theTeam = await Team.find({"school_name": properTeamName}, {_id: 0, __v: 0});
+        var theTeam = await Team.find({"school_name": properTeamName}, {_id: 0, __v: 0});
+
+        if (theTeam.length == 0) {
+            theTeam = await Team.find({"school_name": properTeamNameUpper}, {_id: 0, __v: 0});
+        }
         res.status(200).json(theTeam[0]); // The [0] is so the client has a single JSON instead of an array with only one JSON in it
     } catch (error) {
         res.status(500);
