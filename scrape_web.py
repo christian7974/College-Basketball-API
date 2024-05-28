@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import json
+import re
 
 url = "https://www.sports-reference.com/cbb/seasons/men/2024-school-stats.html#basic_school_stats"
 response = requests.get(url)
@@ -22,6 +23,7 @@ if response.status_code == 200:
                 if (td['data-stat'] != "DUMMY"):
                     if (td['data-stat'] == "school_name"):
                         team_name = td.text.replace('\u00a0NCAA', '') # remove the NCAA from the team name
+                        team_name = re.sub(r'\(([^)]*)\)', r'\1', team_name).strip().title() # Removes the Parantheses from the team name
                         individual_team[td['data-stat']] = team_name
                     else:
                         # make it so that the program continues if the cell is blank
@@ -39,7 +41,7 @@ else:
 with(open("teams.json", "w")) as file:
     file.write(json.dumps(array_of_teams, indent=4))
 
-print(array_of_teams[3])
+# print(array_of_teams[3])
 # list_of_properties = list(array_of_teams[3].keys())
 # print(list_of_properties)
 # write the array to a json file

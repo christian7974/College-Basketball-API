@@ -69,7 +69,6 @@ const findTeamByName = asyncHandler(async(req, res) => {
         const properTeamName = titleCase(teamNameNoUnderscores); // Put the team name in Title Case (oral roberts vs Oral Roberts)
         
         const properTeamNameUpper = properTeamName.toUpperCase(); // This was to take into account teams that are acronyms (i.e. UCLA)  
-
         if (!teamExists(properTeamName) && !teamExists(properTeamNameUpper)) {
             res.status(400);
             res.write(properTeamName + " is not in the database of teams. Please try another team.")
