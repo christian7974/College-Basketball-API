@@ -139,22 +139,26 @@ const getExtreme = asyncHandler(async(req, res) => {
     }
 });
 
-// Function to return an array of JSONs of two teams that the client wants to fetch
+// Function to return an array of JSONs of two teams that the user wants to fetch
 const compareTwoTeams = asyncHandler(async(req, res) => {
     try {
         var teamOneName = req.params['team1'];
         var teamTwoName = req.params['team2'];
         const teamOneNameNoUnderscores = teamOneName.replace(/_/g, " ");
         const properTeamOneName = titleCase(teamOneNameNoUnderscores);
+        const properTeamOneNameUpper = properTeamOneName.toUpperCase();
+
         const teamTwoNameNoUnderscores = teamTwoName.replace(/_/g, " ");
         const properTeamTwoName = titleCase(teamTwoNameNoUnderscores);
-        if (!teamExists(properTeamOneName) && !teamExists(properTeamTwoName)) {
+        const properTeamTwoNameUpper = properTeamTwoName.toUpperCase();
+
+        if (!teamExists(properTeamOneName) && !teamExists(properTeamTwoName) && !teamExists(properTeamOneNameUpper) && !teamExists(properTeamTwoNameUpper)){
             res.status(400).json({error: properTeamOneName + " and " + properTeamTwoName + " are not in the database of teams. Please use two different teams."});
             res.end();
-        } else if (!teamExists(properTeamOneName)) {
+        } else if (!teamExists(properTeamOneName) && !teamExists(properTeamOneNameUpper)) {
             res.status(400).json({error: properTeamOneName + " is not in the database of teams. Please try another team."});
             res.end();
-        } else if (!teamExists(properTeamTwoName)) {
+        } else if (!teamExists(properTeamTwoName) && !teamExists(properTeamTwoNameUpper)) {
             res.status(400).json({error: properTeamTwoName + " is not in the database of teams. Please try another team."});
             res.end();
         };
@@ -162,7 +166,9 @@ const compareTwoTeams = asyncHandler(async(req, res) => {
             "school_name": {
                 $in : [
                     properTeamOneName,
-                    properTeamTwoName
+                    properTeamTwoName,
+                    properTeamOneNameUpper,
+                    properTeamTwoNameUpper
                 ]
             }
         }, {_id: 0, __v: 0});
