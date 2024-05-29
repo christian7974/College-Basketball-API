@@ -136,7 +136,7 @@ const teams = [
         "pf": 734.0
     },
     {
-        "school_name": "Alabama A&M",
+        "school_name": "Alabama Am",
         "g": 35.0,
         "wins": 12.0,
         "losses": 23.0,
@@ -476,7 +476,7 @@ const teams = [
         "pf": 644.0
     },
     {
-        "school_name": "Arkansas-Pine Bluff",
+        "school_name": "Arkansas Pine Bluff",
         "g": 31.0,
         "wins": 13.0,
         "losses": 18.0,
@@ -748,7 +748,7 @@ const teams = [
         "pf": 511.0
     },
     {
-        "school_name": "Bethune-Cookman",
+        "school_name": "Bethune Cookman",
         "g": 34.0,
         "wins": 17.0,
         "losses": 17.0,
@@ -2924,7 +2924,7 @@ const teams = [
         "pf": 664.0
     },
     {
-        "school_name": "Florida A&M",
+        "school_name": "Florida Am",
         "g": 29.0,
         "wins": 6.0,
         "losses": 23.0,
@@ -3196,7 +3196,7 @@ const teams = [
         "pf": 528.0
     },
     {
-        "school_name": "Gardner-Webb",
+        "school_name": "Gardner Webb",
         "g": 33.0,
         "wins": 17.0,
         "losses": 16.0,
@@ -4046,7 +4046,7 @@ const teams = [
         "pf": 502.0
     },
     {
-        "school_name": "Illinois-Chicago",
+        "school_name": "Illinois Chicago",
         "g": 33.0,
         "wins": 12.0,
         "losses": 21.0,
@@ -5168,7 +5168,7 @@ const teams = [
         "pf": 500.0
     },
     {
-        "school_name": "Louisiana-Monroe",
+        "school_name": "Louisiana Monroe",
         "g": 30.0,
         "wins": 11.0,
         "losses": 19.0,
@@ -5542,7 +5542,7 @@ const teams = [
         "pf": 576.0
     },
     {
-        "school_name": "Maryland-Baltimore County",
+        "school_name": "Maryland Baltimore County",
         "g": 32.0,
         "wins": 11.0,
         "losses": 21.0,
@@ -5576,7 +5576,7 @@ const teams = [
         "pf": 505.0
     },
     {
-        "school_name": "Maryland-Eastern Shore",
+        "school_name": "Maryland Eastern Shore",
         "g": 29.0,
         "wins": 9.0,
         "losses": 20.0,
@@ -5644,7 +5644,7 @@ const teams = [
         "pf": 579.0
     },
     {
-        "school_name": "Massachusetts-Lowell",
+        "school_name": "Massachusetts Lowell",
         "g": 32.0,
         "wins": 22.0,
         "losses": 10.0,
@@ -6596,7 +6596,7 @@ const teams = [
         "pf": 599.0
     },
     {
-        "school_name": "Nevada-Las Vegas",
+        "school_name": "Nevada Las Vegas",
         "g": 34.0,
         "wins": 21.0,
         "losses": 13.0,
@@ -6970,7 +6970,7 @@ const teams = [
         "pf": 611.0
     },
     {
-        "school_name": "North Carolina A&T",
+        "school_name": "North Carolina At",
         "g": 32.0,
         "wins": 7.0,
         "losses": 25.0,
@@ -10234,7 +10234,7 @@ const teams = [
         "pf": 421.0
     },
     {
-        "school_name": "Tennessee-Martin",
+        "school_name": "Tennessee Martin",
         "g": 32.0,
         "wins": 21.0,
         "losses": 11.0,
@@ -10302,7 +10302,7 @@ const teams = [
         "pf": 587.0
     },
     {
-        "school_name": "Texas A&M",
+        "school_name": "Texas Am",
         "g": 36.0,
         "wins": 21.0,
         "losses": 15.0,
@@ -10336,7 +10336,7 @@ const teams = [
         "pf": 611.0
     },
     {
-        "school_name": "Texas A&M-Commerce",
+        "school_name": "Texas Am Commerce",
         "g": 33.0,
         "wins": 13.0,
         "losses": 20.0,
@@ -10370,7 +10370,7 @@ const teams = [
         "pf": 582.0
     },
     {
-        "school_name": "Texas A&M-Corpus Christi",
+        "school_name": "Texas Am Corpus Christi",
         "g": 33.0,
         "wins": 21.0,
         "losses": 12.0,
@@ -10506,7 +10506,7 @@ const teams = [
         "pf": 508.0
     },
     {
-        "school_name": "Texas-Rio Grande Valley",
+        "school_name": "Texas Rio Grande Valley",
         "g": 31.0,
         "wins": 6.0,
         "losses": 25.0,
@@ -12002,7 +12002,7 @@ const teams = [
         "pf": 522.0
     },
     {
-        "school_name": "William & Mary",
+        "school_name": "William  Mary",
         "g": 33.0,
         "wins": 10.0,
         "losses": 23.0,

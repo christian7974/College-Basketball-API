@@ -23,8 +23,10 @@ if response.status_code == 200:
                 if (td['data-stat'] != "DUMMY"):
                     if (td['data-stat'] == "school_name"):
                         team_name = td.text.replace('\u00a0NCAA', '') # remove the NCAA from the team name
-                        team_name = re.sub(r'\(([^)]*)\)', r'\1', team_name).strip().title() # Removes the Parantheses from the team name
-                        individual_team[td['data-stat']] = team_name
+                        team_name = re.sub(r'\(([^)]*)\)', r'\1', team_name).strip() # Removes the Parantheses from the team name
+                        team_name = team_name.replace("&", "")
+                        team_name = team_name.replace("-", " ")
+                        individual_team[td['data-stat']] = team_name.title()
                     else:
                         # make it so that the program continues if the cell is blank
                         if td.text == "":
